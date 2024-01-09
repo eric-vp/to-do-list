@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import ContainerTarefas from "./componentes/ContainerTarefas";
+import Header from "./componentes/Header";
+import Footer from "./componentes/Footer";
+
+const Background = styled.section`
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(247,237,226,1) 0%, rgba(238,190,173,1) 100%);
+  min-height: 100vh;
+  min-width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Background>
+      <Header />
+      <ContainerTarefas />
+      <Footer />
+    </Background>
   );
 }
 
