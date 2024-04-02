@@ -5,7 +5,7 @@ const ContainerTarefasUl = styled.ul`
     display: flex;
     flex-direction: column;
     flex-grow: 2;
-    padding: 3rem 600px;
+    align-items: center;
 
     list-style: none;
 `
@@ -163,6 +163,7 @@ function ContainerTarefas() {
                                     if (e.id == tarefa.id) {
                                         if (!tarefa.concluido) {
                                             tarefa.concluido = true;
+                                            
                                             setChecked(tarefa.concluido);
                                         } else {
                                             tarefa.concluido = false;
@@ -180,7 +181,7 @@ function ContainerTarefas() {
                             id={tarefa.id}
                             onChange={e => atualizarTarefa(e)}
                             onBlur={e => { if (e.target.value == "") { removerTarefa(e) } }
-                            } />
+                        } />
                     </TarefaDiv>
                 )
             })}
