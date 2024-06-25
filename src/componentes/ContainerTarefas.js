@@ -119,7 +119,7 @@ function ContainerTarefas() {
     const [checked, setChecked] = useState(false);
 
     const removerTarefa = (evento) => {
-        const listaAtualizada = listaTarefas.filter(tarefa => tarefa.id != evento.target.id);
+        const listaAtualizada = listaTarefas.filter(tarefa => "tarefa-" + tarefa.id != evento.target.id);
         setListaTarefas(listaAtualizada);
         console.log(evento.target.id);
         console.log(listaAtualizada);
@@ -131,7 +131,7 @@ function ContainerTarefas() {
     const atualizarTarefa = (evento) => {
         console.log(listaTarefas);
         listaTarefas.forEach(tarefa => {
-            if (tarefa.id == evento.target.id) {
+            if ("tarefa-" + tarefa.id == evento.target.id) {
                 tarefa.descricao = evento.target.value;
                 setItemTarefa(evento.target.value);
                 localStorage.setItem('tarefas', JSON.stringify(listaTarefas));
