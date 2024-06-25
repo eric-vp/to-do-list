@@ -194,6 +194,7 @@ function ContainerTarefas() {
                         <TarefaItem
                             type="text"
                             value={tarefa.descricao}
+                            style={tarefa.concluido ? { textDecoration: "line-through" } : { textDecoration: "none" }}
                             id={"tarefa-" + tarefa.id}
                             onChange={e => atualizarTarefa(e)}
                             onBlur={e => { if (e.target.value == "") { removerTarefa(e) } }
