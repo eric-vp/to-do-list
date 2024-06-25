@@ -6,13 +6,21 @@ const ContainerTarefasUl = styled.ul`
     flex-direction: column;
     flex-grow: 2;
     align-items: center;
-
     list-style: none;
+
+    @media screen and (max-width: 600px) {
+        width: 100vw;
+        padding: 0 2rem;
+    }
 `
 
 const InputTextoContainer = styled.div`
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
 `
 
 const InputTexto = styled.input`
@@ -38,6 +46,10 @@ const TarefaDiv = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: .8rem;
+    
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
 `
 
 const TarefaCheckbox = styled.input`
@@ -92,6 +104,10 @@ const TarefaItem = styled.input`
     &:focus {
         border-bottom: 2px solid #d84727;
         outline: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: auto;
     }
 `
 
@@ -156,21 +172,21 @@ function ContainerTarefas() {
                     <TarefaDiv key={tarefa.id} >
                         <TarefaCheckbox
                             type="checkbox"
-                            id={tarefa.id}
+                            id={"checkbox-" + tarefa.id}
                             defaultChecked={tarefa.concluido}
                             onClick={e => {
                                 listaTarefas.forEach(e => {
                                     if (e.id == tarefa.id) {
                                         if (!tarefa.concluido) {
                                             tarefa.concluido = true;
-                                            
+                                            document.getElementById("tarefa-" + e.id).style.textDecoration = "line-through";
                                             setChecked(tarefa.concluido);
                                         } else {
                                             tarefa.concluido = false;
+                                            document.getElementById("tarefa-" + e.id).style.textDecoration = "none";
                                             setChecked(tarefa.concluido);
                                         }
                                         console.log(checked);
-                                        // console.log(tarefa.concluido);
                                     };
                                     localStorage.setItem('tarefas', JSON.stringify(listaTarefas));
                                 })
@@ -178,7 +194,7 @@ function ContainerTarefas() {
                         <TarefaItem
                             type="text"
                             value={tarefa.descricao}
-                            id={tarefa.id}
+                            id={"tarefa-" + tarefa.id}
                             onChange={e => atualizarTarefa(e)}
                             onBlur={e => { if (e.target.value == "") { removerTarefa(e) } }
                         } />
